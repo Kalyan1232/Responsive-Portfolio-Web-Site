@@ -11,4 +11,5 @@ export default defineConfig({
       "@": path.resolve(__dirname, "./src"),
     },
   },
+  base: "https://github.com/Kalyan1232/Responsive-Portfolio-Web-Site.git",
 });
