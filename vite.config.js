@@ -11,5 +11,5 @@ export default defineConfig({
       "@": path.resolve(__dirname, "./src"),
     },
   },
-  base: "/Responsive-Portfolio-Web-Site",
+  base: "/Responsive-Portfolio-Web-Site/",
 });
