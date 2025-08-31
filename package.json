@@ -2,7 +2,7 @@
   "name": "portfolio-website",
   "private": true,
   "version": "0.0.0",
-  "homepage": "https://github.com/Kalyan1232/Responsive-Portfolio-Web-Site.git",
+  "homepage": "https://kalyan1232.github.io/Responsive-Portfolio-Web-Site/",
   "type": "module",
   "scripts": {
     "dev": "vite",
