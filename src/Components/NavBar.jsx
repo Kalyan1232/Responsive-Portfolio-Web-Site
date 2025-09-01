@@ -1,6 +1,7 @@
 import { X, Menu } from "lucide-react";
 import { cn } from "../lib/Utils.js";
 import { useState, useEffect } from 'react';
+import { Link } from "react-scroll";
 
 const NavItems = [
     {name: "Home", href: "#hero"},
@@ -17,7 +18,7 @@ export const NavBar = () => {
 
     useEffect(() => {
       const handleScroll = () => {
-        setIsScrolled(window.screenY > 10 );
+        setIsScrolled(window.scrollY  > 10 );
       }
 
       window.addEventListener("scroll",handleScroll);
@@ -42,11 +43,19 @@ export const NavBar = () => {
 
                 {/* Desktop Version */}
                 <div className="hidden md:flex space-x-8">
-                    {NavItems.map((item,key) => (
-                        <a key={key} href={item.href} className="text-foreground/80 hover:text-primary transition-colors duration-300">
+                        {NavItems.map((item, key) => (
+                            <Link
+                            key={key}
+                            to={item.href}
+                            smooth={true}
+                            duration={500}
+                            spy={true}
+                            offset={-70} // adjust if navbar covers content
+                            className="cursor-pointer text-foreground/80 hover:text-primary transition-colors duration-300"
+                            >
                             {item.name}
-                        </a>
-                    ))}
+                            </Link>
+                        ))}
                 </div>
 
                 {/* Mobile Version */}
@@ -54,25 +63,31 @@ export const NavBar = () => {
                     onClick={() => setIsMenuOpen((prev) => !prev)}
                     className="md:hidden p-2 text-foreground z-50"
                     aria-label={isMenuOpen ? "Close Menu" : "Open Menu"}
-                >
+                    >
                     {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
-                </button>
+                    </button>
 
-                <div className={cn(
-                    "fixed inset-0 bg-background/95 backdrop-blur-md z-40 flex flex-col items-center justify-center",
-                    "transition-all duration-300 md:hidden",
-                    isMenuOpen ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"
-                )}>
+                <div
+                    className={cn(
+                        "fixed inset-0 bg-background/95 backdrop-blur-md z-40 flex flex-col items-center justify-center",
+                        "transition-all duration-300 md:hidden",
+                        isMenuOpen ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"
+                    )}
+                >
                     <div className="flex flex-col space-y-8 text-xl">
-                        {NavItems.map((item,key) => (
-                            <a
-                                key={key}
-                                href={item.href}
-                                className="text-foreground/80 hover:text-primary transition-colors duration-300"
-                                onClick={() => setIsMenuOpen(false)}
-                            >
-                                {item.name}
-                            </a>
+                        {NavItems.map((item, key) => (
+                        <Link
+                            key={key}
+                            to={item.href}
+                            smooth={true}
+                            duration={500}
+                            spy={true}
+                            offset={-70}
+                            className="cursor-pointer text-foreground/80 hover:text-primary transition-colors duration-300"
+                            onClick={() => setIsMenuOpen(false)} // close menu after clicking
+                        >
+                            {item.name}
+                        </Link>
                         ))}
                     </div>
                 </div>
