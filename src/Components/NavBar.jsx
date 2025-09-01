@@ -4,12 +4,12 @@ import { useState, useEffect } from 'react';
 import { Link } from "react-scroll";
 
 const NavItems = [
-    {name: "Home", href: "#hero"},
-    {name: "About", href: "#about"},
-    {name: "Skills", href: "#skills"},
-    {name: "Projects", href: "#projects"},
-    {name: "Experience", href: "#experience"},
-    {name: "Contacts", href: "#contacts"},
+    {name: "Home", href: "hero"},
+    {name: "About", href: "about"},
+    {name: "Skills", href: "skills"},
+    {name: "Projects", href: "projects"},
+    {name: "Experience", href: "experience"},
+    {name: "Contacts", href: "contacts"},
 ];
 
 export const NavBar = () => {
@@ -45,13 +45,13 @@ export const NavBar = () => {
                 <div className="hidden md:flex space-x-8">
                         {NavItems.map((item, key) => (
                             <Link
-                            key={key}
-                            to={item.href}
-                            smooth={true}
-                            duration={500}
-                            spy={true}
-                            offset={-70} // adjust if navbar covers content
-                            className="cursor-pointer text-foreground/80 hover:text-primary transition-colors duration-300"
+                                key={key}
+                                to={item.href}
+                                smooth={true}
+                                duration={500}
+                                spy={true}
+                                offset={-70} // adjust if navbar covers content
+                                className="cursor-pointer text-foreground/80 hover:text-primary transition-colors duration-300"
                             >
                             {item.name}
                             </Link>
