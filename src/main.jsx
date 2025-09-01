@@ -6,6 +6,8 @@ import { StrictMode } from 'react'
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
-    <App />
+    <HashRouter>
+      <App />
+    </HashRouter>
   </StrictMode>,
 )
