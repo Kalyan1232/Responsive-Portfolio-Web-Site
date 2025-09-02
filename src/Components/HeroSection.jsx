@@ -22,9 +22,14 @@ export const HeroSection = () => {
                         that drive real business results.
                     </p>
                     <div className="pt-4 opacity-0 animate-fade-in-delay-3">
-                        <a href="projects" className="cosmic-button">
+                        <button
+                            onClick={() =>
+                                document.getElementById("projects")?.scrollIntoView({ behavior: "smooth" })
+                            }
+                            className="cosmic-button"
+                        >
                             View My Work
-                        </a>
+                        </button>
                     </div>
                 </div>
             </div>
