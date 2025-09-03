@@ -25,6 +25,20 @@ export const NavBar = () => {
       return () => window.removeEventListener("scroll",handleScroll);
     }, []);
 
+    useEffect(() => {
+         if (isMenuOpen) {
+            document.body.style.overflow = "hidden";
+            document.body.style.position = "fixed";
+            document.body.style.width = "100%";
+        } else {
+            document.body.style.overflow = "";
+            document.body.style.position = "";
+            document.body.style.width = "";
+        }
+        }, [isMenuOpen]
+    );
+
+
     return (
         <nav
             className={cn("fixed w-full z-40 transition-all duration-300", 
@@ -32,14 +46,20 @@ export const NavBar = () => {
             )}
         >
             <div className="container flex items-center justify-between">
-                <a
-                    className="text-xl font-bold text-primary flex items-center"
-                    href="#hero"
+                <button
+                    onClick={() => {
+                        const heroSection = document.querySelector("#hero");
+                        if (heroSection) {
+                        heroSection.scrollIntoView({ behavior: "smooth" });
+                        }
+                    }}
+                        className="text-xl font-bold text-primary flex items-center"
                 >
                     <span className="relative z-10">
                         <span className="text-glow text-foreground">Kalyan</span> Portfolio
                     </span>
-                </a>
+                </button>
+
 
                 {/* Desktop Version */}
                 <div className="hidden md:flex space-x-8">
@@ -69,11 +89,11 @@ export const NavBar = () => {
 
                 <div
                     className={cn(
-                        "fixed inset-0 bg-background/95 backdrop-blur-md z-40 flex flex-col items-center justify-center",
-                        "transition-all duration-300 md:hidden",
+                        "fixed inset-0 z-50 flex flex-col items-center justify-center",
+                        "bg-background transition-opacity duration-300 md:hidden",
                         isMenuOpen ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"
                     )}
-                >
+                    >
                     <div className="flex flex-col space-y-8 text-xl">
                         {NavItems.map((item, key) => (
                         <Link
